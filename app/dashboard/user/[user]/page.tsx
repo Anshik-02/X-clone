@@ -1,4 +1,4 @@
-import ProfileCard2 from '@/app/components/ProfileCard2'
+
 import UserProfile from '@/app/components/userProfile'
 import Link from 'next/link'
 import React from 'react'

@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "next/navigation";
 import axios from "axios";
-import { Posts } from "./Tweets";
+
 import CommentIcon from "./commentIcon";
 import PrettyHeart from "./heart";
 import XSpinner from "./spinner";

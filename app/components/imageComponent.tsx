@@ -5,7 +5,7 @@ import { CldUploadWidget } from "next-cloudinary";
 import { useImage } from "./imageContext";
 
 
-function ImageUploader() {
+export function ImageUploader() {
   const [imageId, setImageId] = useState("");
 
   return (

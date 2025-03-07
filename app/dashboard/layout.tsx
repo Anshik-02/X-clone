@@ -1,7 +1,6 @@
-import CommentIcon from '@/app/components/commentIcon';
+
 import { ImageProvider } from '@/app/components/imageContext';
 import News from '@/app/components/news'
-import RecoilProvider from '@/app/components/provider';
 import Sidebar from '@/app/components/sidebar'
 
 import React from 'react'

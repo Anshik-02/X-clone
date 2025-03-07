@@ -1,5 +1,5 @@
 import { connectDB } from "@/lib/db";
-import { tweetModel, userModel } from "@/model/schema";
+import {  userModel } from "@/model/schema";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/route";
@@ -59,7 +59,7 @@ return NextResponse.json({
 }
 
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   const session = await getServerSession(authOptions);
   if (!session) {
     return NextResponse.json({ error: "Not Authenticated" }, { status: 401 });

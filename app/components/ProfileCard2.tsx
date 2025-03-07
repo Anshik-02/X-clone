@@ -4,7 +4,7 @@ import { SessionProvider, useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
-import { Input } from '@mui/base/Input';
+
 
 export default function ProfileCard2() {
   return (
@@ -50,7 +50,7 @@ const changeHandler=(e)=>{
 }
 const submitt=async(e)=>{
   e.preventDefault()
-const response=await axios.put("http://localhost:3000/api/user",form)
+await axios.put("http://localhost:3000/api/user",form)
 
 location.reload()
 }
