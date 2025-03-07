@@ -7,7 +7,9 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
+    extend: {fontFamily: {
+      cairoli: ["CairoliNowExtended-Black", "sans-serif"],
+    },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
