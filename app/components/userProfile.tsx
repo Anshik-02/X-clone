@@ -32,7 +32,7 @@ function Card() {
       const response = await axios.get(
         `http://localhost:3000/api/user/follow?otherUserId=${userId}`
       );
-      console.log(response.data);
+
       setFollow(response.data.isFollowers);
     };
     fetch();
@@ -43,7 +43,7 @@ function Card() {
       const response = await axios.get(
         `http://localhost:3000/api/user/profile?userId=${userId}`
       );
-      console.log(response.data.user);
+
       setUser(response.data.user);
     };
     fetchUser();
@@ -58,7 +58,7 @@ function Card() {
           `http://localhost:3000/api/user?otherUserId=${userId}`
         );
         setFollow(response.data.follow);
-        console.log(response.data.follow);
+
       } else {
         response = await axios.post(
           `http://localhost:3000/api/user/unfollow?otherUserId=${userId}`

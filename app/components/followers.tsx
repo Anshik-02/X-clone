@@ -27,7 +27,7 @@ const {data:session}=useSession()
 useEffect(()=>{
  const fetchUser=async()=>{
     const response=await axios("http://localhost:3000/api/user")
-    console.log(response.data.followers)
+
   
     setFollower(Array.isArray(response.data.followers) ? response.data.followers : [])
  }

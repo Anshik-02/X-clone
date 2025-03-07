@@ -51,7 +51,7 @@ const changeHandler=(e)=>{
 const submitt=async(e)=>{
   e.preventDefault()
 const response=await axios.put("http://localhost:3000/api/user",form)
-console.log(response.data)
+
 location.reload()
 }
 

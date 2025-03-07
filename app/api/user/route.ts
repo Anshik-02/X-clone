@@ -20,7 +20,7 @@ export async function PUT(req: NextRequest) {
   );
 
   return NextResponse.json({
-    msg: "hehehehaw",
+    msg: "done",
     updatedUser
   });
 }

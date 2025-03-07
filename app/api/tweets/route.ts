@@ -31,7 +31,7 @@ export async function POST(req:NextRequest) {
 
         return NextResponse.json({msg:"course created successfully"  });
     }
-    return NextResponse.json({msg:"hehehehha"});
+    return NextResponse.json({msg:"done"});
     }
     
 
