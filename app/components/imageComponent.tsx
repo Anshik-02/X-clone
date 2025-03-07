@@ -24,7 +24,7 @@ export function ImageComponent({ setImageId }: { setImageId: (id: string) => voi
       options={{ sources: ["local"] }}
       onSuccess={(result) => {
         if (result.event === "success") {
-          //@ts-ignore
+         //@ts-expect-error
           setImageId(result.info.public_id);
         }
       }}

@@ -36,7 +36,7 @@ export async function GET(req:NextRequest) {
   if (!session) {
     return NextResponse.json({ error: "Not Authenticated" }, { status: 401 });
   }
-  const userId = session.user.id;
+  
   const { searchParams } = new URL(req.url);
   const tweetId = searchParams.get("tweetId");
 

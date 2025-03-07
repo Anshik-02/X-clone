@@ -22,7 +22,7 @@ export async function POST(req:NextRequest) {
     const {content,image}=body
     if(content){
        await connectDB()
-       const tweet= await tweetModel.create({
+     await tweetModel.create({
             content,
             authorId,
             image
