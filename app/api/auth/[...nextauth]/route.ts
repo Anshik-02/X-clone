@@ -11,22 +11,21 @@ import GoogleProvider from "next-auth/providers/google";
     }),
   ],
   callbacks: {
-    //@ts-expect-error
+    //@ts-expect-error Token might not always have an id
     async session({ session, token }) {
       if (token.id) {
         session.user.id = token.id as string; // Attach MongoDB user ID to session
-
       }
-      session.user.username=session.user.name.split(" ").join("").toLowerCase();
+      session.user.username = session.user.name.split(" ").join("").toLowerCase();
   
       return session;
     },
-    //@ts-expect-error
+    //@ts-expect-error user might be undefined
     async jwt({ user, token }) {
       if (user) {
         await connectDB();
         const existingUser = await userModel.findOne({ email: user.email });
-       
+  
         if (existingUser) {
           token.id = existingUser._id.toString(); // Store MongoDB _id in token
         } else {
@@ -39,13 +38,10 @@ import GoogleProvider from "next-auth/providers/google";
           token.id = newUser._id.toString();
         }
       }
-  
       return token;
-
     },
-   
-    
   },
+  
 };
 const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
