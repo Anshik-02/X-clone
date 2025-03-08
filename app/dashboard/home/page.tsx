@@ -1,11 +1,47 @@
+"use client";
+
 import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import InputComponent from "@/app/components/InputComponent";
 import Tweets from "@/app/components/Tweets";
 import { getServerSession } from "next-auth";
+import { useEffect, useState } from "react";
 
+export default function HomePage() {
+  const [session, setSession] = useState<any>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-export default async function HomePage() {
-  const session = await getServerSession(authOptions);
+  useEffect(() => {
+    // Get session on client side
+    const fetchSession = async () => {
+      const userSession = await getServerSession(authOptions);
+      setSession(userSession);
+    };
+
+    fetchSession();
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize(); // Check on initial load
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // If mobile, show "Coming Soon"
+  if (isMobile) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-black text-white">
+        <p>🚀 Coming Soon</p>
+      </div>
+    );
+  }
+
+  // If session is not loaded yet
+  if (!session) {
+    return <div className="flex items-center justify-center h-screen">Loading...</div>;
+  }
 
   return (
     <div className="h-screen flex flex-col">
