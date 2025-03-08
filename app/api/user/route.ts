@@ -2,7 +2,8 @@ import { connectDB } from "@/lib/db";
 import {  userModel } from "@/model/schema";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { authOptions } from "../auth/[...nextauth]/authOptions";
+
 
 export async function PUT(req: NextRequest) {
   const session = await getServerSession(authOptions);

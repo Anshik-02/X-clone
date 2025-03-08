@@ -5,6 +5,18 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 
+interface User {
+  bio?: string;
+  following?: string;
+  followers?: string;
+}
+
+interface NameInput{
+  value:string;
+ name:string;
+  changeHandler:(e: React.ChangeEvent<HTMLInputElement>)=>void;
+ label:string 
+}
 
 export default function ProfileCard2() {
   return (
@@ -18,13 +30,13 @@ export default function ProfileCard2() {
 
 function Card() {
   const { data: session } = useSession();
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
   const [open, setOpen] = useState(false);
-  const [form,setForm]=useState({
-    username:"",
-    bio:""
-  })
-const {username,bio}=form
+  const [form, setForm] = useState({
+    username: "",
+    bio: "",
+  });
+  const { username, bio } = form;
   useEffect(() => {
     if (!session?.user) return;
 
@@ -44,17 +56,16 @@ const {username,bio}=form
     setOpen((prev) => !prev);
   };
 
-const changeHandler=(e)=>{
-  const {name,value}=e.target
-  setForm((c)=>({...c,[name]:value}))
-}
-const submitt=async(e)=>{
-  e.preventDefault()
-await axios.put("http://localhost:3000/api/user",form)
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setForm((c) => ({ ...c, [name]: value }));
+  };
+  const submitt = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    await axios.put("http://localhost:3000/api/user", form);
 
-location.reload()
-}
-
+    location.reload();
+  };
 
   return (
     <div>
@@ -68,16 +79,29 @@ location.reload()
           <h2 className="font-bold text-2xl m-3">EDIT PROFILE</h2>
           <div className="m-3">
             <form>
-              <NameInput name={"username"} value={username} changeHandler={changeHandler} label="Username"/>
-              <NameInput name={"bio"} value={bio} changeHandler={changeHandler} label="Bio"/>
-          <button onClick={submitt} className="rounded-lg bg-white text-black hover:brightness-90 font-semibold py-2 px-5 w-full mt-5 mb-5">
-            SUBMIT
-          </button>
+              <NameInput
+                name={"username"}
+                value={username}
+                changeHandler={changeHandler}
+                label="Username"
+              />
+              <NameInput
+                name={"bio"}
+                value={bio}
+                changeHandler={changeHandler}
+                label="Bio"
+              />
+              <button
+                onClick={submitt}
+                className="rounded-lg bg-white text-black hover:brightness-90 font-semibold py-2 px-5 w-full mt-5 mb-5"
+              >
+                SUBMIT
+              </button>
             </form>
           </div>
         </Modal>
       )}
-<div  className="relative">
+      <div className="relative">
         <div>
           <img src="/bg.jpg" className="w-full" alt="Background" />
         </div>
@@ -97,41 +121,36 @@ location.reload()
               Edit profile
             </button>
           </div>
-        <div className="ml-5 mt-2">
-          <h2 className="font-bold text-xl">{session?.user.name}</h2>
-          <p className="font-extralight text-gray-500">
-            @{session?.user.name?.toLowerCase()}
+          <div className="ml-5 mt-2">
+            <h2 className="font-bold text-xl">{session?.user.name}</h2>
+            <p className="font-extralight text-gray-500">
+              @{session?.user.name?.toLowerCase()}
+            </p>
+          </div>
+
+          <p className="ml-6 font-extralight mt-2 text-base">
+            {user?.bio || "No bio available"}
           </p>
-        </div>
 
-        <p className="ml-6 font-extralight mt-2 text-base">
-          {user?.bio || "No bio available"}
-        </p>
-
-        <div className="flex font-extralight ml-5 mt-6 text-gray-500 gap-8 mb-3">
-          <Link href={"/dashboard/profile/following"}>
-            <p className="hover:underline cursor-pointer">
-              {user?.following?.length ?? 0} Following
-            </p>
-          </Link>
-          <Link href={"/dashboard/profile/followers"}>
-            <p className="hover:underline cursor-pointer">
-              {user?.followers?.length ?? 0} Followers
-            </p>
-          </Link>
+          <div className="flex font-extralight ml-5 mt-6 text-gray-500 gap-8 mb-3">
+            <Link href={"/dashboard/profile/following"}>
+              <p className="hover:underline cursor-pointer">
+                {user?.following?.length ?? 0} Following
+              </p>
+            </Link>
+            <Link href={"/dashboard/profile/followers"}>
+              <p className="hover:underline cursor-pointer">
+                {user?.followers?.length ?? 0} Followers
+              </p>
+            </Link>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );
 }
-function NameInput({value,name,changeHandler,label}) {
-
-
-
-
+function NameInput({ value, name, changeHandler, label }:NameInput) {
   const [error, setError] = useState("");
-
 
   return (
     <div className="flex flex-col !w-96">
@@ -145,11 +164,9 @@ function NameInput({value,name,changeHandler,label}) {
           type="text"
           value={value}
           onChange={changeHandler}
-   
           className=" bg-black text-white outline-none"
-          name={name} 
+          name={name}
         />
-    
       </div>
       {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
     </div>

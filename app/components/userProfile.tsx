@@ -6,6 +6,17 @@ import { useParams } from "next/navigation";
 import React, { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
+interface User{
+pic?:string;
+username?:string;
+followers?:string[];
+following?:string[];
+bio?:string
+
+}
+
+
+
 export default function UserProfile() {
   return (
     <div>
@@ -19,7 +30,7 @@ export default function UserProfile() {
 function Card() {
   const { data: session } = useSession();
   const router = useRouter();
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User|null>(null);
   const [follow, setFollow] = useState(false);
   const params = useParams();
   const userId = params.user?.slice();

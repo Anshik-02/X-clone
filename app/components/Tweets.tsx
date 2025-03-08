@@ -1,12 +1,12 @@
 import axios from "axios";
 import { getServerSession } from "next-auth";
 import React from "react";
-import { authOptions } from "../api/auth/[...nextauth]/route";
-import { FaRegCommentDots } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa";
+
+
 import PrettyHeart from "./heart";
 import CommentIcon from "./commentIcon";
 import Link from "next/link";
+import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 
 interface Author {
   _id: string; 
