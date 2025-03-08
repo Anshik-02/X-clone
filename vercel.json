@@ -6,10 +6,10 @@
         }
       ],
       
-        "functions": {
-          "api/auth/callback/google": {
-            "maxDuration": 60
-          }
-        }
+       "functions": {
+    "api/auth/[...nextauth]": {
+      "maxDuration": 60
+    }
+  }
       
   }
