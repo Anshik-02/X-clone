@@ -6,7 +6,7 @@ import React from "react";
 import PrettyHeart from "./heart";
 import CommentIcon from "./commentIcon";
 import Link from "next/link";
-import { authOptions } from "../api/auth/[...nextauth]/authOptions";
+import { authOptions } from "../../lib/authOptions";
 
 interface Author {
   _id: string; 

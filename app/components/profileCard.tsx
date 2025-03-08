@@ -4,7 +4,7 @@
 import { getServerSession } from "next-auth"
 
 import MoreOptions from "./popover";
-import { authOptions } from "../api/auth/[...nextauth]/authOptions";
+import { authOptions } from "../../lib/authOptions";
 
 export default async function ProfileCard() {
     const session = await getServerSession(authOptions);

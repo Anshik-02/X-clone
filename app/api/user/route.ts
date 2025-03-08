@@ -2,7 +2,7 @@ import { connectDB } from "@/lib/db";
 import {  userModel } from "@/model/schema";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
-import { authOptions } from "../auth/[...nextauth]/authOptions";
+import { authOptions } from "../../../lib/authOptions";
 
 
 export async function PUT(req: NextRequest) {

@@ -1,5 +1,5 @@
 
-import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
+import { authOptions } from "@/lib/authOptions";
 import { connectDB } from "@/lib/db";
 import { tweetModel } from "@/model/schema";
 import { getServerSession } from "next-auth";

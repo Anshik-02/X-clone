@@ -1,4 +1,4 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
+import { authOptions } from "@/lib/authOptions";
 import InputComponent from "@/app/components/InputComponent";
 import MobileWrapper from "@/app/components/MoblieWrapper";
 

@@ -3,7 +3,7 @@ import { connectDB } from "@/lib/db";
 import { tweetModel } from "@/model/schema";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
-import { authOptions } from "../auth/[...nextauth]/authOptions";
+import { authOptions } from "../../../lib/authOptions";
 
 interface Data{
     tweetId:string
