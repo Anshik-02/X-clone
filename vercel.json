@@ -8,7 +8,7 @@
       
       
         "functions": {
-          "api/users/**/ *.ts": {
+          "api/auth/**/ *.ts": {
             "maxDuration": 30
           }
         }
