@@ -26,7 +26,7 @@ function Heart({ tweetId }: Data) {
     const fetchLike = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXTAUTH_URL}/api/tweets/likes?tweetId=${tweetId}`
+          `/api/tweets/likes?tweetId=${tweetId}`
         );
         setIsLiked(response.data.tweet.likes.includes(session.user.id));
       } catch (error) {
@@ -43,13 +43,13 @@ const toggleLike = async () => {
   
       if (!isLiked) {
         response = await axios.post(
-          `${process.env.NEXTAUTH_URL}/api/tweets/likes/`,
+          `/api/tweets/likes/`,
           { tweetId }
         );
         setIsLiked(response.data.liked);
       } else {
         response = await axios.post(
-          `${process.env.NEXTAUTH_URL}/api/tweets/likes/unlike`,
+          `/api/tweets/likes/unlike`,
           { tweetId }
         );
         setIsLiked(response.data.unliked); 
