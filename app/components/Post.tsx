@@ -42,9 +42,9 @@ const [comments,setComments]=useState<Tweet[]>([])
 
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/tweets/post?tweetId=${tweetId}`
+          `${process.env.NEXTAUTH_URL}/api/tweets/post?tweetId=${tweetId}`
         );
-const res=await axios.get( `http://localhost:3000/api/tweets/comment?tweetId=${tweetId}`)
+const res=await axios.get( `${process.env.NEXTAUTH_URL}/api/tweets/comment?tweetId=${tweetId}`)
 
 setComments(res.data.comments)
   

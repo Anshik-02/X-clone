@@ -40,7 +40,7 @@ interface Author {
 
 
   export default async function Tweets() {
-    const response = await axios.get("http://localhost:3000/api/tweets");
+    const response = await axios.get(`${process.env.NEXTAUTH_URL}/api/tweets`);
 
 
     return (

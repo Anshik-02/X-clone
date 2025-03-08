@@ -40,7 +40,7 @@ function Input(){
   }
   
   const clickHandler = async () => {
-    const response =await axios.post("http://localhost:3000/api/tweets/", payload);
+    const response =await axios.post(`${process.env.NEXTAUTH_URL}/api/tweets/`, payload);
 
     setData({
       content:""

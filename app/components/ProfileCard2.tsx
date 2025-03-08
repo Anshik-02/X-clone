@@ -42,7 +42,7 @@ function Card() {
 
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/user");
+        const response = await axios.get(`${process.env.NEXTAUTH_URL}/api/user`);
         setUser(response.data.user);
       } catch (error) {
         console.error("Error fetching user:", error);
@@ -62,7 +62,7 @@ function Card() {
   };
   const submitt = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    await axios.put("http://localhost:3000/api/user", form);
+    await axios.put(`${process.env.NEXTAUTH_URL}/api/user`, form);
 
     location.reload();
   };

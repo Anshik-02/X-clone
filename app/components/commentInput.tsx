@@ -39,7 +39,7 @@ tweetId:tweetId
   }
   
   const clickHandler = async () => {
-    const response =await axios.post("http://localhost:3000/api/tweets/comment/", payload);
+    const response =await axios.post(`${process.env.NEXTAUTH_URL}/api/tweets/comment/`, payload);
 
     setData({
       comment:""

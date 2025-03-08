@@ -25,7 +25,7 @@ function Follower() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await axios("http://localhost:3000/api/user");
+      const response = await axios(`${process.env.NEXTAUTH_URL}/api/user`);
 
       setFollower(
         Array.isArray(response.data.followers) ? response.data.followers : []
