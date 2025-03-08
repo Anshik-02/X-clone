@@ -6,10 +6,12 @@
         }
       ],
       
-       "functions": {
-    "api/auth/[...nextauth]": {
-      "maxDuration": 60
-    }
-  }
+      
+        "functions": {
+          "api/users/**/ *.ts": {
+            "maxDuration": 30
+          }
+        }
+      
       
   }
