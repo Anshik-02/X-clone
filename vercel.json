@@ -7,7 +7,7 @@
     "routes": [
     {
       "src": "/api/auth/(.*)",
-      "dest": "/api/auth/[...nextauth]/route.ts"
+      "dest": "/api/auth/[...nextauth].ts"
     }
   ]
   }
