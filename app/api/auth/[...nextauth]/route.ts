@@ -1,10 +1,10 @@
 import { connectDB } from "@/lib/db";
 import { userModel } from "@/model/schema";
-import { Session } from "inspector/promises";
-import NextAuth, { JWT } from "next-auth";
+
+import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
- export const authOptions= {
+const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID ?? "",
