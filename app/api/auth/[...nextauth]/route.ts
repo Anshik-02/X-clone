@@ -1,6 +1,7 @@
 import { connectDB } from "@/lib/db";
 import { userModel } from "@/model/schema";
-import NextAuth from "next-auth";
+import { Session } from "inspector/promises";
+import NextAuth, { JWT } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
  export const authOptions= {
@@ -11,7 +12,7 @@ import GoogleProvider from "next-auth/providers/google";
     }),
   ],
   callbacks: {
-    //@ts-expect-error Token might not always have an id
+
     async session({ session, token }) {
       if (token.id) {
         session.user.id = token.id as string; // Attach MongoDB user ID to session
@@ -20,7 +21,7 @@ import GoogleProvider from "next-auth/providers/google";
   
       return session;
     },
-    //@ts-expect-error user might be undefined
+
     async jwt({ user, token }) {
       if (user) {
         await connectDB();
