@@ -1,6 +1,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import InputComponent from "@/app/components/InputComponent";
-import MobileWrapper from "@/app/components/moblieWrapper";
+import MobileWrapper from "@/app/components/MoblieWrapper";
+
 import Tweets from "@/app/components/Tweets";
 import { getServerSession } from "next-auth";
 
