@@ -8,9 +8,9 @@
       
       
         "functions": {
-          "api/auth/**/ *.ts": {
-            "maxDuration": 30
-          }
+            "api/auth/[...nextauth].ts": {
+                "maxDuration": 60
+              }
         }
       
       
