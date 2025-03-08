@@ -1,13 +1,8 @@
 {
-    "functions": {
-      "api/auth/callback/google": {
-        "maxDuration": 30
-      }
-    },
-    "routes": [
-    {
-      "src": "/api/auth/(.*)",
-      "dest": "/api/auth/[...nextauth].ts"
-    }
-  ]
+    "rewrites": [
+        {
+          "source": "/api/auth/:path*",
+          "destination": "/api/auth/:path*"
+        }
+      ]
   }
