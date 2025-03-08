@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function MobileHandler({ children }: { children: React.ReactNode }) {
+export default function MobileWrapper({ children }: { children: React.ReactNode }) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ export default function MobileHandler({ children }: { children: React.ReactNode 
       setIsMobile(window.innerWidth <= 768);
     };
 
-    handleResize(); // Check on initial load
+    handleResize(); // Initial check on component load
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
