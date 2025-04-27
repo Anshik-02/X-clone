@@ -41,7 +41,7 @@ function Card() {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        `${process.env.NEXTAUTH_URL}/api/user/follow?otherUserId=${userId}`
+        `/api/user/follow?otherUserId=${userId}`
       );
 
       setFollow(response.data.isFollowers);
@@ -52,7 +52,7 @@ function Card() {
   useEffect(() => {
     const fetchUser = async () => {
       const response = await axios.get(
-        `${process.env.NEXTAUTH_URL}/api/user/profile?userId=${userId}`
+        `/api/user/profile?userId=${userId}`
       );
 
       setUser(response.data.user);
@@ -66,13 +66,13 @@ function Card() {
 
       if (!follow) {
         response = await axios.post(
-          `${process.env.NEXTAUTH_URL}/api/user?otherUserId=${userId}`
+          `/api/user?otherUserId=${userId}`
         );
         setFollow(response.data.follow);
 
       } else {
         response = await axios.post(
-          `${process.env.NEXTAUTH_URL}/api/user/unfollow?otherUserId=${userId}`
+          `/api/user/unfollow?otherUserId=${userId}`
         );
         setFollow(response.data.unfollow);
       }
